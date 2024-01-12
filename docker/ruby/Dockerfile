@@ -5,16 +5,7 @@ FROM ruby:3.2.1-alpine3.17 as builder
 
 WORKDIR /learn-ror
 
-RUN apk update && \
-    apk add --no-cache \
-      build-base \
-      libxml2-dev \
-      libxslt-dev \
-      linux-headers \
-      libpq \
-      mysql-dev \
-      shared-mime-info && \
-    gem install bundler
+RUN gem install bundler
 
 COPY Gemfile Gemfile.lock ./
 
@@ -28,21 +19,7 @@ FROM ruby:3.2.1-alpine3.17
 
 WORKDIR /learn-ror
 
-RUN apk update && \
-    apk add --no-cache \
-      build-base \
-      curl-dev \
-      libxml2-dev \
-      libxslt-dev \
-      linux-headers \
-      libpq \
-      mysql-client \
-      mysql-dev \
-      less \
-      nodejs \
-      tzdata \
-      git && \
-    gem install bundler && \
+RUN gem install bundler && \
     bundle config set --global force_ruby_platform true
 
 COPY --from=builder /usr/local/bundle /usr/local/bundle
