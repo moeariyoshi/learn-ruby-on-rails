@@ -1,0 +1,18 @@
+services:
+  ruby:
+    build:
+      context: .
+      dockerfile: ./docker/ruby/Dockerfile
+    container_name: ruby
+    command: /bin/sh
+    volumes:
+      - type: bind
+        source: .
+        target: /learn-ror
+    tty: true
+    stdin_open: true
+
+volumes:
+  mysql-data:
+    name: learn-ror
+    external: true
