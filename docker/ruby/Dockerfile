@@ -7,12 +7,17 @@ WORKDIR /learn-ror
 
 RUN apk update && \
     apk add --no-cache \
-      build-base \
+      # Essential build tools like compilers and make.
+      build-base \ 
+      # Development files for XML and XSLT support.
       libxml2-dev \
       libxslt-dev \
+      # Header files needed for building certain software.
       linux-headers \
+      # PostgreSQL client library.
       libpq \
       mysql-dev \
+      # MIME database used by various applications.
       shared-mime-info && \
     gem install bundler
 
@@ -31,11 +36,14 @@ WORKDIR /learn-ror
 RUN apk update && \
     apk add --no-cache \
       build-base \
+      # Development files for the cURL library.
       curl-dev \
       libxml2-dev \
       libxslt-dev \
+      # Header files needed for building certain software.
       linux-headers \
       libpq \
+      # MySQL client and development files.
       mysql-client \
       mysql-dev \
       less \
